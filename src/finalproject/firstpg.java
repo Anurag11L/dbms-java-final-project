@@ -258,7 +258,7 @@ public class firstpg extends javax.swing.JFrame {
         else{
             try{
                 conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/finalproject?user=root&password=dbms@123");
-                ps = conn.prepareStatement("select * from studetdetails table where usernamet =? and passwordt =?");
+                ps = conn.prepareStatement("select * from studentdetalis where username =? and password =?");
                 ps.setString(1,uname);
                 ps.setString(2, pword);
                 ResultSet rs = ps.executeQuery();
