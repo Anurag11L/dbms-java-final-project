@@ -310,47 +310,44 @@ public class secondpg extends javax.swing.JFrame {
         String cetscore;
         cetscore = this.cet.getText();
         
-         if (username != null && password != null) 
-         {
-            if (password.equals(repassword)) 
-            {
-                try 
-                {
-                    System.out.print("Checking");
-                    conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/finalproject?user=root&password=dbms@123");
-                    ps = conn.prepareStatement("insert into finalproject.studentdetalis(firstname,lastname,username,password,email,phonenumber,sscscore,cetscore) values(?,?,?,?,?,?,?,?)");
-                    ps.setString(1, firstname);
-                    ps.setString(2, lastname);
-                    ps.setString(3, username);
-                    ps.setString(4, password);
-                    ps.setString(4, repassword);
-                    ps.setString(5, email);
-                    ps.setString(6,phonenumber);
-                    ps.setString(7,sscscore);
-                    ps.setString(8, cetscore);
-                    ps.executeUpdate();
+        if(firstname.equals("") || lastname.equals("")|| username.equals("")|| password.equals("")|| repassword.equals("")|| phonenumber.equals("")|| sscscore.equals("")|| cetscore.equals("")){
+            // || repword.equals("")
+            JOptionPane.showMessageDialog(this,"Some fields empty","Error",1);
+        }
+        else{
+            if (username != null && password != null) {
+               if (password.equals(repassword)) {
+                   try {
+                       System.out.print("Checking");
+                       conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/finalproject?user=root&password=dbms@123");
+                       ps = conn.prepareStatement("insert into finalproject.studentdetalis(firstname,lastname,username,password,email,phonenumber,sscscore,cetscore) values(?,?,?,?,?,?,?,?)");
+                       ps.setString(1, firstname);
+                       ps.setString(2, lastname);
+                       ps.setString(3, username);
+                       ps.setString(4, password);
+                       ps.setString(4, repassword);
+                       ps.setString(5, email);
+                       ps.setString(6,phonenumber);
+                       ps.setString(7,sscscore);
+                       ps.setString(8, cetscore);
+                       ps.executeUpdate();
 
-                    JOptionPane.showMessageDialog(null,"Account creation successful");
-                    
-//                    String data[] = {fnamet.getText(),lnamet.getText(),usernamet.getText(),passt.getText(),emailt.getText(),phonet.getText(),ssc.getText(),cet.getText()};
-//                    DefaultTableModel tab = (DefaultTableModel)table1.getModel();
-//                    tab.addRow(data);
-                    
-                    firstpg l = new firstpg();
-                    l.setVisible(true);
-                    l.setLocationRelativeTo(null); 
-                    this.dispose();
-                } 
-                catch (SQLException ex) 
-                {
-                    System.err.print(ex);
-                }
-            } 
-            else 
-            {
-                JOptionPane.showMessageDialog(this, "Check your password");
-            }
-        }   
+                       JOptionPane.showMessageDialog(null,"Account creation successful");
+
+                       firstpg l = new firstpg();
+                       l.setVisible(true);
+                       l.setLocationRelativeTo(null); 
+                       this.dispose();
+                   } 
+                   catch (SQLException ex) {
+                       System.err.print(ex);
+                   }
+               } 
+               else {
+                   JOptionPane.showMessageDialog(this, "Check your password");
+               }
+           }   
+        }
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void phonetKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phonetKeyReleased
