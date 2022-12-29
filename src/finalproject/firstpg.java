@@ -6,16 +6,16 @@ package finalproject;
 
 
 //import com.sun.jdi.connect.spi.Connection;
-import java.sql.PreparedStatement;
-import java.sql.DriverManager;
-import javax.swing.JOptionPane;
+//import java.sql.PreparedStatement;
+//import java.sql.DriverManager;
+//import javax.swing.JOptionPane;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+//import java.sql.SQLException;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import java.sql.*;
 /**
@@ -235,7 +235,7 @@ public class firstpg extends javax.swing.JFrame {
         else{
             try{
                 conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/finalproject?user=root&password=dbms@123");
-                ps = conn.prepareStatement("select * from studentdetalis where username =? and password =?");
+                ps = conn.prepareStatement("select * from login where lusername =? and lpassword =?");
                 ps.setString(1,uname);
                 ps.setString(2, pword);
                 ResultSet rs = ps.executeQuery();
