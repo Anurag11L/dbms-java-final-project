@@ -95,13 +95,13 @@ public class admindisplaypg extends javax.swing.JFrame {
 
         table2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "l_id", "username", "password", "cetscorecardno"
+                "username", "password", "cetscorecardno"
             }
         ));
         jScrollPane3.setViewportView(table2);
@@ -212,7 +212,7 @@ public class admindisplaypg extends javax.swing.JFrame {
                 DefaultTableModel m = (DefaultTableModel)table2.getModel();  
                 m.setRowCount(0);
                 while(rs.next()){
-                    m.addRow(new String[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)});
+                    m.addRow(new String[]{rs.getString(1),rs.getString(2),rs.getString(3)});
                 }
 
             }catch(Exception e){

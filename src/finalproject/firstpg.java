@@ -236,18 +236,25 @@ public class firstpg extends javax.swing.JFrame {
             try{
                 conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/finalproject?user=root&password=dbms@123");
                 ps = conn.prepareStatement("select * from login where lusername =? and lpassword =?");
+                
                 ps.setString(1,uname);
                 ps.setString(2, pword);
                 ResultSet rs = ps.executeQuery();
                 rs = ps.executeQuery();
                 
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/finalproject?user=root&password=dbms@123");
+                ps = conn.prepareStatement("insert into finalproject.loginactivity(lusername) values(?)");
+                ps.setString(1, uname);
+                ps.executeUpdate();
+                
+                
+                
                 if(rs.next()){
-//                    String un = rs.getString("username");
-                    thirdpg tp = new thirdpg();
+                    fourthpg tp = new fourthpg();
                     tp.setVisible(true);
                     tp.pack();
                     tp.setLocationRelativeTo(null);
-                    tp.setDefaultCloseOperation(secondpg.EXIT_ON_CLOSE);
+                    tp.setDefaultCloseOperation(firstpg.EXIT_ON_CLOSE);
                     this.dispose();
                 }
                 else{
@@ -258,77 +265,7 @@ public class firstpg extends javax.swing.JFrame {
                 System.out.println(" "+ e);
             }
         }
-        
-//        String username;
-//        username = this.usernamet.getText();
-//        String passwordFromDb = null;
-//        String password;
-//        password = this.passwordt.getText();
-//        try
-//        {
-//            conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/finalproject?user=root&password=dbms@123");
-//            ps = conn.prepareStatement("select password from studentdetails where username = ?");
-//            ps.setString(1, username);
-//            ResultSet rs = ps.executeQuery();
-//            
-//            while(rs.next())
-//            {
-//                passwordFromDb = rs.getString("password");
-//            }
-//            
-//            if(password.equals(passwordFromDb))
-//            {
-//                thirdpg tp = new thirdpg();
-//                tp.setVisible(true);
-//                tp.pack();
-//                tp.setLocationRelativeTo(null);
-//                tp.setDefaultCloseOperation(secondpg.EXIT_ON_CLOSE);
-//                this.dispose();
-//            }
-//            else
-//            {
-//                JOptionPane.showMessageDialog(this,"Incorrect username or password");
-//            }
-//        }
-//        catch(Exception e)
-//        {
-//            System.out.println(e);
-//        }
-
-//        String a = usernamet.getText();
-//        String b = passwordt.getText();
-//        try {
-//            // configDB is my connnection file to mysql
-//            try (java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/finalproject?user=root&password=dbms@123");) 
-//            {
-////                String username = "select username from akun where username = ? and password = ?";
-//                String username = "select username from user where username = ? ";
-//
-//                java.sql.PreparedStatement ps = conn.prepareStatement(username);
-//                ps.setString(1, a);
-//                //ps.setString(2,password);
-//                java.sql.ResultSet rs = ps.executeQuery();
-//
-//                if (rs.next()) {
-//                    JOptionPane.showMessageDialog(this, "Benar");
-//                    thirdpg tp = new thirdpg();
-//                    tp.setVisible(true);
-//                    tp.pack();
-//                    tp.setLocationRelativeTo(null);
-//                    tp.setDefaultCloseOperation(secondpg.EXIT_ON_CLOSE);
-//                    this.dispose();
-//                } else {
-//                    JOptionPane.showMessageDialog(this, "Username or Password is incorrect");
-//                }
-//            }
-//        } 
-//        catch (Exception e) {
-//            JOptionPane.showMessageDialog(this, e.getMessage());
-//        }
-//
-//
-//        
-//        
+    
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked

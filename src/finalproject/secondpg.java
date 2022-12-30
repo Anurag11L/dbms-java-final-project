@@ -404,34 +404,34 @@ public class secondpg extends javax.swing.JFrame {
 
     private void sscKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sscKeyReleased
         
-        String ssc1;
-        ssc1 = this.ssc.getText();
-        try 
-        {
-            long num = Long.parseLong(ssc1);
-        } 
-        catch (NumberFormatException nfe) 
-        {
-            System.out.println(nfe);
-            ssc1 = ssc1.substring(0, ssc1.length() - 1);
-            this.ssc.setText(ssc1);
-        }
+//        String ssc1;
+//        ssc1 = this.ssc.getText();
+//        try 
+//        {
+//            long num = Long.parseLong(ssc1);
+//        } 
+//        catch (NumberFormatException nfe) 
+//        {
+//            System.out.println(nfe);
+//            ssc1 = ssc1.substring(0, ssc1.length() - 1);
+//            this.ssc.setText(ssc1);
+//        }
     }//GEN-LAST:event_sscKeyReleased
 
     private void cetKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cetKeyReleased
         
-        String cet1;
-        cet1 = this.cet.getText();
-        try 
-        {
-            long nnum = Long.parseLong(cet1);
-        } 
-        catch (NumberFormatException nfe) 
-        {
-            System.out.println(nfe);
-            cet1 = cet1.substring(0, cet1.length() - 1);
-            this.cet.setText(cet1);
-        }
+//        String cet1;
+//        cet1 = this.cet.getText();
+//        try 
+//        {
+//            long nnum = Long.parseLong(cet1);
+//        } 
+//        catch (NumberFormatException nfe) 
+//        {
+//            System.out.println(nfe);
+//            cet1 = cet1.substring(0, cet1.length() - 1);
+//            this.cet.setText(cet1);
+//        }
     }//GEN-LAST:event_cetKeyReleased
 
     private void cetscorecardnoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cetscorecardnoKeyReleased
