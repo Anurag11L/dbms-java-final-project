@@ -70,13 +70,13 @@ public class admindisplaypg extends javax.swing.JFrame {
 
         table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "cet_c_no", "firstname", "lastname", "username", "email", "ph. no.", "sscscore", "cetscore"
+                "cetscorecardno", "firstname", "lastname", "email", "ph. no.", "sscscore", "cetscore"
             }
         ));
         jScrollPane2.setViewportView(table1);
@@ -101,7 +101,7 @@ public class admindisplaypg extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "l_id", "username", "password", "cetscorecardno"
             }
         ));
         jScrollPane3.setViewportView(table2);
@@ -190,7 +190,7 @@ public class admindisplaypg extends javax.swing.JFrame {
             DefaultTableModel m = (DefaultTableModel)table1.getModel();  
             m.setRowCount(0);
             while(rs.next()){
-                m.addRow(new String[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8)});
+                m.addRow(new String[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7)});
             }
             
         }catch(Exception e){
