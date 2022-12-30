@@ -183,7 +183,7 @@ public class admindisplaypg extends javax.swing.JFrame {
 
     private void viewtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewtMouseClicked
         
-        String sql = "select * from studentdetalis";
+        String sql = "select * from studentdetalis ";
         try{
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
