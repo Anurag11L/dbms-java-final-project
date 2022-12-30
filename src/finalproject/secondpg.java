@@ -350,15 +350,14 @@ public class secondpg extends javax.swing.JFrame {
                    try {
                        System.out.print("Checking");
                        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/finalproject?user=root&password=dbms@123");
-                       ps = conn.prepareStatement("insert into finalproject.studentdetalis(firstname,lastname,username,email,phonenumber,sscscore,cetscore,cetscorecardno) values(?,?,?,?,?,?,?,?)");
+                       ps = conn.prepareStatement("insert into finalproject.studentdetalis(firstname,lastname,email,phonenumber,sscscore,cetscore,cetscorecardno) values(?,?,?,?,?,?,?)");
                        ps.setString(1, firstname);
                        ps.setString(2, lastname);
-                       ps.setString(3, username);
-                       ps.setString(4, email);
-                       ps.setString(5,phonenumber);
-                       ps.setString(6,sscscore);
-                       ps.setString(7, cetscore);
-                       ps.setString(8, cetscorecardno);
+                       ps.setString(3, email);
+                       ps.setString(4,phonenumber);
+                       ps.setString(5,sscscore);
+                       ps.setString(6, cetscore);
+                       ps.setString(7, cetscorecardno);
                        ps.executeUpdate();
 
                        JOptionPane.showMessageDialog(null,"Account creation successful");
