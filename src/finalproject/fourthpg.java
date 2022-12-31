@@ -136,7 +136,7 @@ public class fourthpg extends javax.swing.JFrame {
 //        String marks;
 //        marks =this.markst.getText();
         
-        String sql = "select * from college where cutoff > (select cetscore from studentdetalis where cetscorecardno like (select cetscorecardno from login where lusername like (select lusername from loginactivity where l_id = (select MAX(l_id) from loginactivity))))";                                                  
+        String sql = "select * from college where cutoff > (select (cetscore-3) from studentdetalis where cetscorecardno like (select cetscorecardno from login where lusername like (select lusername from loginactivity where l_id = (select MAX(l_id) from loginactivity))))";                                                  
         try{
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
