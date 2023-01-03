@@ -58,6 +58,9 @@ public class admindisplaypg extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         textfield1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        textfield2 = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -128,17 +131,17 @@ public class admindisplaypg extends javax.swing.JFrame {
         table2.setForeground(new java.awt.Color(255, 255, 255));
         table2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Username", "Password", "CET Seat No."
+                "Username", "CET Seat No."
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -168,9 +171,35 @@ public class admindisplaypg extends javax.swing.JFrame {
             }
         });
 
+        textfield1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textfield1ActionPerformed(evt);
+            }
+        });
+
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("ENTER FIRST NAME :");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("ENTER USERNAME :");
+
+        textfield2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textfield2ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setBackground(new java.awt.Color(0, 153, 102));
+        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Search");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -196,7 +225,14 @@ public class admindisplaypg extends javax.swing.JFrame {
                                 .addComponent(textfield1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton3))
-                            .addComponent(jButton2))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addGap(52, 52, 52)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(textfield2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton4)))
                         .addContainerGap(16, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -215,7 +251,12 @@ public class admindisplaypg extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(jButton2)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton4)
+                        .addComponent(textfield2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(396, 396, 396))
@@ -250,7 +291,7 @@ public class admindisplaypg extends javax.swing.JFrame {
 
     private void viewtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewtMouseClicked
         
-        String sql = "select * from studentdetalis ";
+        String sql = "select * from studentdetalis";
         try{
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -263,7 +304,6 @@ public class admindisplaypg extends javax.swing.JFrame {
         }catch(Exception e){
             System.out.println("Error : "+ e.getMessage());
         }
-        
     }//GEN-LAST:event_viewtMouseClicked
 
     private void viewtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewtActionPerformed
@@ -279,7 +319,7 @@ public class admindisplaypg extends javax.swing.JFrame {
                 DefaultTableModel m = (DefaultTableModel)table2.getModel();  
                 m.setRowCount(0);
                 while(rs.next()){
-                    m.addRow(new String[]{rs.getString(1),rs.getString(2),rs.getString(3)});
+                    m.addRow(new String[]{rs.getString(1),rs.getString(3)});
                 }
 
             }catch(Exception e){
@@ -293,22 +333,17 @@ public class admindisplaypg extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        
-        
-        
         try{
             String sql = "SELECT cetscorecardno,firstname,lastname,email,phonenumber,sscscore,cetscore FROM studentdetalis WHERE firstname =?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1,textfield1.getText());
             ResultSet rs = ps.executeQuery();
             DefaultTableModel m1 = (DefaultTableModel)table1.getModel(); 
-            DefaultTableModel m2 = (DefaultTableModel)table2.getModel();
             m1.setRowCount(0);
-            m2.setRowCount(0);
             while(rs.next())
             {
                 m1.addRow(new String[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7)});
-                m2.addRow(new String[]{rs.getString(1),rs.getString(2),rs.getString(3)});
+//                m2.addRow(new String[]{rs1.getString(1),rs1.getString(2)});
             }
             
         }catch(Exception e){
@@ -316,6 +351,34 @@ public class admindisplaypg extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void textfield1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfield1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textfield1ActionPerformed
+
+    private void textfield2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfield2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textfield2ActionPerformed
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        
+        try{
+            String sql = "SELECT lusername,cetscorecardno FROM login WHERE lusername =?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1,textfield2.getText());
+            ResultSet rs = ps.executeQuery();
+            DefaultTableModel m1 = (DefaultTableModel)table2.getModel(); 
+            m1.setRowCount(0);
+            while(rs.next())
+            {
+                m1.addRow(new String[]{rs.getString(1),rs.getString(2)});
+            }
+            
+        }catch(Exception e){
+            System.out.println("Error : "+ e.getMessage());
+        }
+        
+    }//GEN-LAST:event_jButton4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -356,8 +419,10 @@ public class admindisplaypg extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -365,6 +430,7 @@ public class admindisplaypg extends javax.swing.JFrame {
     private javax.swing.JTable table1;
     private javax.swing.JTable table2;
     private javax.swing.JTextField textfield1;
+    private javax.swing.JTextField textfield2;
     private javax.swing.JButton viewt;
     // End of variables declaration//GEN-END:variables
 }

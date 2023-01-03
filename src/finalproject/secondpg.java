@@ -399,6 +399,10 @@ public class secondpg extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(this,"Please enter valid CET seat number","Error",1);
         }
+//        else if(cetscore>=String.valueOf(100))
+//        {
+//            JOptionPane.showMessageDialog(this,"Please enter valid CET seat number","Error",1);
+//        }
         else{
             if (username != null && password != null) {
                if (password.equals(repassword)) {
@@ -464,6 +468,17 @@ public class secondpg extends javax.swing.JFrame {
         try 
         {
             Double num = Double.valueOf(ssc1);
+            try 
+            {
+                if(num>100)
+                {
+                    JOptionPane.showMessageDialog(this,"Please enter valid SSC Score","Error",1);
+                }
+            } 
+            catch (Exception nfe) 
+            {
+                System.out.println(nfe);
+            }
         } 
         catch (NumberFormatException nfe) 
         {
@@ -474,12 +489,26 @@ public class secondpg extends javax.swing.JFrame {
     }//GEN-LAST:event_sscKeyReleased
 
     private void cetKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cetKeyReleased
-        
+//        else if(cetscore>=String.valueOf(100))
+//        {
+//            JOptionPane.showMessageDialog(this,"Please enter valid CET seat number","Error",1);
+//        }
         String cet1;
         cet1 = this.cet.getText();
         try 
         {
             Double nnum = Double.valueOf(cet1);
+            try 
+            {
+                if(nnum>100)
+                {
+                    JOptionPane.showMessageDialog(this,"Please enter valid CET Score","Error",1);
+                }
+            } 
+            catch (Exception nfe) 
+            {
+                System.out.println(nfe);
+            }
         } 
         catch (NumberFormatException nfe) 
         {

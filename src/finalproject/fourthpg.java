@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import javax.swing.JOptionPane;
 //import java.sql.PreparedStatement;
 //import java.sql.DriverManager;
 /**
@@ -82,7 +83,6 @@ public class fourthpg extends javax.swing.JFrame {
         field5 = new javax.swing.JTextField();
         field6 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -191,15 +191,17 @@ public class fourthpg extends javax.swing.JFrame {
         field5.setEditable(false);
         field5.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
 
+        field6.setEditable(false);
         field6.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        field6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field6ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("DETAILS :");
-
-        jLabel9.setFont(new java.awt.Font("Leelawadee UI", 1, 13)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("(EDITABLE)");
 
         jLabel10.setFont(new java.awt.Font("Leelawadee UI", 1, 13)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -243,24 +245,19 @@ public class fourthpg extends javax.swing.JFrame {
                             .addComponent(field3)
                             .addComponent(field2)
                             .addComponent(field1))
-                        .addGroup(panel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(63, 63, 63)
+                        .addGroup(panel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(label6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(panel16Layout.createSequentialGroup()
-                                .addGap(63, 63, 63)
-                                .addGroup(panel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(label6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(124, 124, 124)
+                                .addGroup(panel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(panel16Layout.createSequentialGroup()
-                                        .addGap(124, 124, 124)
-                                        .addGroup(panel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(panel16Layout.createSequentialGroup()
-                                                .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE))
-                                            .addComponent(label3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(label4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(label5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                            .addGroup(panel16Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel9)))
+                                        .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE))
+                                    .addComponent(label3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(label4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(label5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panel16Layout.createSequentialGroup()
                         .addGroup(panel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,8 +312,7 @@ public class fourthpg extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(panel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(field6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))))
+                            .addComponent(field6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -374,7 +370,30 @@ public class fourthpg extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
 
-        String sql = "select * from college where cutoff > (select (cetscore-2) from studentdetalis where cetscorecardno like (select cetscorecardno from login where lusername like (select lusername from loginactivity where l_id = (select MAX(l_id) from loginactivity))))";
+//        String sql2 = "update table studentdetalis set cetscore =? where cetscorecardno = ?";
+        
+//        String cetscore;
+//        cetscore = this.field6.getText();
+//        String cetseatno;
+//        cetseatno = this.field5.getText();
+//        try{
+//                conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/finalproject?user=root&password=dbms@123");
+//                ps = conn.prepareStatement("select * from studentdetalis where cetscore =? and cetscorecardno =?");
+//                
+//                ps.setString(1,cetscore);
+//                ps.setString(2, cetseatno);
+//                ResultSet rs = ps.executeQuery();
+//                rs = ps.executeQuery();
+//                }
+//                else{
+//                    JOptionPane.showMessageDialog(rootPane, "Username or Password not matched", "Error", 1);
+//                }
+//        }
+//        catch(Exception ex){
+//                System.out.println(" "+ ex);
+//        }
+        
+        String sql = "select * from college where cutoff > (select m_cetscore from studentdetalis where cetscorecardno like (select cetscorecardno from login where lusername like (select lusername from loginactivity where l_id = (select MAX(l_id) from loginactivity))))";
         try{
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -392,6 +411,22 @@ public class fourthpg extends javax.swing.JFrame {
     private void field1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_field1ActionPerformed
+
+    private void field6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field6ActionPerformed
+        
+//        String cetscore;
+//        cetscore = this.field6.getText();
+//        try 
+//        {
+//            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/finalproject?user=root&password=dbms@123");
+//            ps = conn.prepareStatement("insert into finalproject.studentdetalis(cetscore) values(?)");
+//            ps.setString(1, cetscore);
+//        }
+//        catch(Exception e)
+//        {
+//            System.err.print(e);
+//        }
+    }//GEN-LAST:event_field6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -447,7 +482,6 @@ public class fourthpg extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel label1;
