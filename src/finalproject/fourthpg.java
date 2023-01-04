@@ -191,7 +191,6 @@ public class fourthpg extends javax.swing.JFrame {
         field5.setEditable(false);
         field5.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
 
-        field6.setEditable(false);
         field6.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         field6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,7 +208,7 @@ public class fourthpg extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Leelawadee UI", 1, 13)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("CONFIRM  YOUR  CET SCORE AND THEN CLICK ");
+        jLabel11.setText("CONFIRM  YOUR  DETAILS AND THEN CLICK ");
 
         jLabel12.setFont(new java.awt.Font("Leelawadee UI", 1, 13)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
